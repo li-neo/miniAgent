@@ -1,0 +1,26 @@
+# Plugins load in order. Consumers declare their required services.
+[[plugins]]
+factory = "miniagent.plugins.model:OpenAIModelPlugin"
+# Model and endpoint default to MINIAGENT_MODEL and OPENAI_BASE_URL.
+# API credentials are read from OPENAI_API_KEY, never from the session log.
+
+[[plugins]]
+factory = "miniagent.plugins.tools:ToolsPlugin"
+[plugins.options]
+cwd = "."
+timeout = 30
+output_limit = 20000
+
+[[plugins]]
+factory = "miniagent.plugins.session:SessionPlugin"
+[plugins.options]
+path = ".miniagent/session.jsonl"
+system = "You are a helpful agent. Use the available tools when needed."
+
+[[plugins]]
+factory = "miniagent.plugins.loop:LoopPlugin"
+[plugins.options]
+max_steps = 20
+
+[[plugins]]
+factory = "miniagent.plugins.cli:CLIPlugin"

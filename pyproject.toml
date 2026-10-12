@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "miniagent-core"
+version = "0.1.0"
+description = "A small, plugin-composed agent runtime."
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.27,<1", "jsonschema>=4.23,<5"]
+
+[project.scripts]
+miniagent = "miniagent.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

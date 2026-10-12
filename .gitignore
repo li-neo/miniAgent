@@ -1,0 +1,7 @@
+.venv/
+.miniagent/
+__pycache__/
+*.egg-info/
+.env
+build/
+dist/
